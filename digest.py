@@ -136,8 +136,10 @@ def _unwrap(value):
 
 def _embedded_json(markup: str) -> list:
     """Every JSON document embedded in the page: data scripts and Astro props."""
+    # application/ld+json is search-engine metadata about the site itself
+    # (organisation, regional sites, the page), never a changelog. Skip it.
     blobs = re.findall(
-        r"<script\b[^>]*(?:type=\"application/(?:ld\+)?json\"|id=\"__NEXT_DATA__\")[^>]*>([\s\S]*?)</script>",
+        r"<script\b[^>]*(?:type=\"application/json\"|id=\"__NEXT_DATA__\")[^>]*>([\s\S]*?)</script>",
         markup, flags=re.I,
     )
     blobs += [html_mod.unescape(p) for p in re.findall(r'\bprops="([^"]*)"', markup)]
@@ -158,6 +160,8 @@ def extract_dated_data(markup: str) -> list[tuple[str, str]]:
 
     def walk(node):
         if isinstance(node, dict):
+            if any(k.startswith("@") for k in node):
+                return  # schema.org metadata, wherever it turns up
             title = next((node[k] for k in TITLE_KEYS if isinstance(node.get(k), str)), None)
             dated = sorted(node, key=lambda k: ("date" not in k.lower() and "publish" not in k.lower()))
             day = next(
@@ -461,6 +465,16 @@ def backfill_dated(sources: list[dict]) -> None:
     the page lists, so running this twice gives the same result.
     """
     digest = load_json(DIGEST_FILE, {"updated": None, "runs": []})
+
+    # One-off cleanup: an earlier run read Klaviyo's site metadata as updates
+    # (regional site names and a page title). Remove those items.
+    bad = re.compile(r"^(Klaviyo( [A-Z]{2})?|Composer GA announcement - Oct 2026) \(20\d\d-\d\d-\d\d\)$")
+    for run in digest["runs"]:
+        for f in run["findings"]:
+            if f["name"] == "Klaviyo":
+                f["new"] = [i for i in f["new"] if not bad.match(i)]
+        run["findings"] = [f for f in run["findings"] if f.get("new") or f.get("details")]
+
     for source in sources:
         if not source.get("dated"):
             continue
@@ -474,12 +488,22 @@ def backfill_dated(sources: list[dict]) -> None:
         print(f"  page: {describe(markup)}")
         heads, data = extract_dated_headings(markup), extract_dated_data(markup)
         print(f"  found {len(heads)} from headings, {len(data)} from embedded data")
+        print(f"  headings sample: {heads[:4]}")
+        print(f"  embedded sample: {data[:4]}")
         pairs = data if len(data) > len(heads) else heads
-        if len(pairs) < 5:
-            first = DATE_RE.search(markup)
-            if first:
-                snippet = re.sub(r"\s+", " ", markup[max(0, first.start() - 300): first.end() + 100])
-                print(f"  around the first date: {snippet}")
+        if len(pairs) < 20:
+            # Too few to be the real list. Print clues about where the list lives.
+            h3s = [re.sub(r"\s+", " ", TAG_RE.sub("", h)).strip() for h in re.findall(r"<h3\b[^>]*>(.*?)</h3>", markup, flags=re.S | re.I)]
+            print(f"  first h3 headings: {h3s[:6]}")
+            srcs = re.findall(r'<script\b[^>]*\bsrc="([^"]+)"', markup, flags=re.I)
+            apis = sorted(set(re.findall(r'https?://[^"\'\s<>]*(?:api|graphql|contentful|sanity|cms|json)[^"\'\s<>]*', markup)))
+            print(f"  scripts: {srcs[:8]}")
+            print(f"  data-looking urls: {apis[:8]}")
+            for m in list(DATE_RE.finditer(markup))[:3]:
+                snippet = re.sub(r"\s+", " ", markup[max(0, m.start() - 200): m.end() + 80])
+                print(f"  around a date: {snippet}")
+            print("  too few updates to trust, leaving this source's months unchanged")
+            continue
         this_year = str(date.today().year)
         by_month: dict[str, list[str]] = {}
         for day, title in sorted(pairs):

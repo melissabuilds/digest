@@ -103,19 +103,42 @@ def load_json(path: Path, default):
         return default
 
 
-def follow(urls: list[str], limit: int = 3) -> dict[str, list[str]]:
-    """Open each new page and pull its headings, so the email names the features."""
-    details: dict[str, list[str]] = {}
+def sections(markup: str) -> dict[str, list[str]]:
+    """Group a page's headings into {section: [features]}.
+
+    h2 starts a section, h3 and h4 are the features inside it, and h1 (the page
+    title) is skipped. Pages with no h2 put everything under "".
+    """
+    stripped = re.sub(rf"<({BLOCK_TAGS})\b[\s\S]*?</\1>", " ", markup, flags=re.I)
+    grouped: dict[str, list[str]] = {}
+    current = ""
+    for level, inner in HEADING_RE.findall(stripped):
+        text = re.sub(r"\s+", " ", html_mod.unescape(TAG_RE.sub(" ", inner))).strip()
+        if not (3 <= len(text) <= 200) or text.lower() in NOISE:
+            continue
+        if level == "1":
+            continue
+        if level == "2":
+            current = text
+            grouped.setdefault(current, [])
+        else:
+            grouped.setdefault(current, []).append(text)
+    return {k: v for k, v in grouped.items() if v}
+
+
+def follow(urls: list[str], limit: int = 3) -> dict[str, dict[str, list[str]]]:
+    """Open each new page and group its headings, so the report names the features."""
+    details: dict[str, dict[str, list[str]]] = {}
     for url in urls[:limit]:
         if not url.startswith("http"):
             continue
         try:
-            headings = extract(fetch(url), url, None)
+            grouped = sections(fetch(url))
         except Exception as exc:  # noqa: BLE001
             print(f"  could not open {url}: {exc}", file=sys.stderr)
             continue
-        if headings:
-            details[url] = headings[:40]
+        if grouped:
+            details[url] = grouped
     return details
 
 
@@ -125,9 +148,12 @@ def summarize(findings: list[dict], api_key: str, model: str) -> str | None:
     for f in findings:
         lines.append(f"## {f['name']} ({f['url']})")
         lines.extend(f"- {item}" for item in f["new"][:60])
-        for url, headings in f.get("details", {}).items():
+        for url, grouped in f.get("details", {}).items():
             lines.append(f"### contents of {url}")
-            lines.extend(f"- {h}" for h in headings)
+            for section, features in grouped.items():
+                if section:
+                    lines.append(f"{section}:")
+                lines.extend(f"- {h}" for h in features)
     prompt = (
         "You track competitors for a hotel CRM and marketing automation product.\n"
         "Below are items that appeared on competitor pages since the last check.\n"
@@ -178,9 +204,12 @@ def build_report(findings: list[dict], baselines: list[str], summary: str | None
             parts.append(f"- {item}")
         if len(f["new"]) > 40:
             parts.append(f"- ...and {len(f['new']) - 40} more")
-        for url, headings in f.get("details", {}).items():
+        for url, grouped in f.get("details", {}).items():
             parts.append(f"\n**{url}**\n")
-            parts.extend(f"- {h}" for h in headings)
+            for section, features in grouped.items():
+                if section:
+                    parts.append(f"\n*{section}*\n")
+                parts.extend(f"- {h}" for h in features)
         parts.append("")
     if baselines:
         parts.append("First check, baseline saved for: " + ", ".join(baselines))

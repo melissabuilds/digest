@@ -3,76 +3,327 @@
   "runs": [
     {
       "date": "2026-11-16",
-      "summary": "Covers 15 Oct to 15 Nov 2026. One substantial product release in the window, from Braze. Attentive and Canary were quiet on product and active on positioning.\n\n1. Braze Account objects, general availability (new feature). Lets a brand model the business behind its users: companies, franchises, properties, households, with hierarchies between them. This is multi-property data modelling landing natively in a consumer marketing platform, which is the structural advantage hospitality CRM has historically had. Worth watching closely.\n\n2. Braze Skills and External MCP servers (AI/agent). Skills are reusable standing instructions the assistant follows across a workspace. External MCP servers, in early access, let it reach into Jira, Notion and GitHub with per-tool admin approval. The agent layer is becoming an integration surface rather than a chat box.\n\n3. Braze self-serve action banks for Decisioning Studio Pro, beta (AI/agent). Customers can now edit the set of offers, subject lines and send times the decisioning engine chooses from, with the account team reviewing before launch. AI decisioning moving from managed service toward self-serve.\n\n4. Braze WhatsApp Request Contact Info flow, general availability (new feature). Captures a phone number from users who arrive with only a business-scoped WhatsApp ID and links them to an existing profile. Identity resolution for WhatsApp matters for international guest messaging.\n\n5. Attentive's new CEO Eric Miao set out his vision for the company on 9 November (other). The framing is a refounding around AI as the intelligence layer across channels. A leadership change plus a strategy reset usually precedes a roadmap shift, so expect movement here. Attentive also announced Pacsun as a customer on 29 October.\n\n6. Canary published a study of more than 10 million AI-powered guest interactions on 28 October, linking AI guest engagement to higher hotel revenue, better personalization and happier guests (other). No product launch, but it is a data-backed sales argument for AI in guest engagement, aimed squarely at the buyers Revinate sells to. Expect to hear it quoted in deals.\n\nAlso in the window: Canary announced the AI and Digital Innovation Impact Award at the Tourism Innovation Summit and an Inc. Power Partner award, both on 22 October. Braze also shipped a 15 October release that this first pass did not open.",
+      "summary": "Braze makes properties and franchises first-class data\n\nBraze Account objects went generally available on 12 November. Brands can model the business behind their users, including properties, franchises and households, with hierarchies between them. Multi-property data modelling is the structural advantage hospitality CRM has relied on, and it is now native in a consumer marketing platform. The same release added Skills and External MCP servers, pushing the Braze agent layer toward an integration surface.\n\nAttentive's new CEO Eric Miao set out an AI-first vision for the company on 9 November. Expect a roadmap shift.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
-            "https://www.braze.com/docs/releases/2026/10_15_26",
             "https://www.braze.com/docs/releases/2026/11_12_26"
           ],
           "details": {
-            "https://www.braze.com/docs/releases/2026/11_12_26": [
-              "November 12, 2026 release",
-              "Data & Reporting",
-              "Segment reporting",
-              "Query Builder date range and expanded exports",
-              "Account objects",
-              "Calculated attributes",
-              "Cloud Data Ingestion visual mapper",
-              "Cloud Data Ingestion: Workload Identity Federation for Google sources",
-              "Cloud Data Ingestion to BrazeAI Decisioning Studio",
-              "API request log",
-              "Databricks OpenSharing for EU clusters",
-              "Data Distribution monthly release",
-              "Workload Identity Federation for Currents",
-              "BrazeAI",
-              "Verified MCP clients",
-              "Remote MCP server support for IP allowlisting",
-              "Workspace endpoints for the Braze MCP server",
-              "Agent Console enhancements",
-              "Brand guidelines",
-              "Skills",
-              "External MCP servers",
-              "Agents and Context",
-              "Optimize with BrazeAI and Intelligent Timing improvements",
-              "AI item recommendations: improved creation flow",
-              "More flexible experiments",
-              "Decisioning Studio Go agent status indicators",
-              "Self-serve action banks for Decisioning Studio Pro",
-              "Braze email stats in Decisioning Studio Go agent reporting",
-              "Orchestration",
-              "Partner app governance",
-              "Sign in to Braze Bonfire Community with Braze",
-              "Terminate roaming sessions",
-              "Suspend dormant accounts",
-              "Workspace quiet hours",
-              "Multi-channel support in Message Prioritization",
-              "Send to Destination",
-              "Send to a Decisioning Studio Go agent",
-              "Workspace Canvas alerts",
-              "Slack notifications for Canvas alerts",
-              "Channels & Touchpoints",
-              "WhatsApp BSUID Request Contact Info flow"
-            ]
+            "https://www.braze.com/docs/releases/2026/11_12_26": {
+              "Data & Reporting": [
+                "Segment reporting",
+                "Query Builder date range and expanded exports",
+                "Account objects",
+                "Calculated attributes",
+                "Cloud Data Ingestion visual mapper",
+                "Cloud Data Ingestion: Workload Identity Federation for Google sources",
+                "Cloud Data Ingestion to BrazeAI Decisioning Studio",
+                "API request log",
+                "Databricks OpenSharing for EU clusters",
+                "Workload Identity Federation for Currents"
+              ],
+              "BrazeAI": [
+                "Verified MCP clients",
+                "Remote MCP server support for IP allowlisting",
+                "Workspace endpoints for the Braze MCP server",
+                "Agent Console enhancements",
+                "Brand guidelines",
+                "Skills",
+                "External MCP servers",
+                "Agents and Context",
+                "Optimize with BrazeAI and Intelligent Timing improvements",
+                "AI item recommendations: improved creation flow",
+                "More flexible experiments",
+                "Decisioning Studio Go agent status indicators",
+                "Self-serve action banks for Decisioning Studio Pro",
+                "Braze email stats in Decisioning Studio Go agent reporting"
+              ],
+              "Orchestration": [
+                "Partner app governance",
+                "Sign in to Braze Bonfire Community with Braze",
+                "Terminate roaming sessions",
+                "Suspend dormant accounts",
+                "Workspace quiet hours",
+                "Multi-channel support in Message Prioritization",
+                "Send to Destination",
+                "Send to a Decisioning Studio Go agent",
+                "Workspace Canvas alerts",
+                "Slack notifications for Canvas alerts"
+              ],
+              "Channels & Touchpoints": [
+                "WhatsApp BSUID Request Contact Info flow"
+              ]
+            }
           }
         },
         {
           "name": "Attentive",
           "url": "https://www.attentive.com/press",
           "new": [
-            "Attentive's New CEO Eric Miao Sets New Vision to Transform How Brands Market to Consumers (9 November 2026)",
-            "Pacsun Selects Attentive to Power Its Next Generation of Customer Engagement (29 October 2026)"
+            "Attentive's New CEO Eric Miao Sets New Vision to Transform How Brands Market to Consumers (9 Nov)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "summary": "Canary publishes a 10M-interaction study on AI and hotel revenue\n\nCanary's study links AI-powered guest engagement to higher hotel revenue, better personalization and happier guests. No product launch, but a data-backed sales argument aimed at the buyers Revinate sells to. Canary also collected two awards and an ELAF Group rollout. Attentive changed CEO and signed Pacsun.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/10_15_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive's next chapter: Eric Miao named CEO (5 Oct)",
+            "Pacsun Selects Attentive to Power Its Next Generation of Customer Engagement (29 Oct)"
           ]
         },
         {
           "name": "Canary",
           "url": "https://www.canarytechnologies.com/press",
           "new": [
-            "AI-Powered Guest Engagement Linked to Higher Hotel Revenue, Better Personalization and Happier Guests, Study of 10+ Million Interactions Finds (28 October 2026)",
-            "Canary Technologies Wins AI & Digital Innovation Impact Award at TIS 2026 (22 October 2026)",
-            "Canary Technologies Recognized as a 2026 Inc. Power Partner Awards Winner (22 October 2026)"
+            "ELAF Group Brings AI-Powered Guest Service to Its Hotels with Canary Technologies (13 Oct)",
+            "Canary Technologies Wins AI & Digital Innovation Impact Award at TIS 2026 (22 Oct)",
+            "Canary Technologies Recognized as a 2026 Inc. Power Partner Awards Winner (22 Oct)",
+            "AI-Powered Guest Engagement Linked to Higher Hotel Revenue, Study of 10+ Million Interactions Finds (28 Oct)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "summary": "Attentive adds Lifecycle Intelligence to AI Pro\n\nProduct Affinity segments went generally available, with RFM and customer lifetime value in beta. Attentive is building value-based segmentation into its AI tier, the same territory as hotel guest value scoring.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/9_17_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive Releases New AI Pro and AI Reporting Functionality (22 Sep)",
+            "Catalyst Brands Moves Off Legacy Martech Stack to Power 1:1 Personalization (23 Sep)",
+            "AI Is Influencing What Shoppers Buy, New Attentive Research Finds (30 Sep)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "summary": "Attentive AI Grow goes generally available\n\nAI Grow personalizes when shoppers see sign-up units based on their browsing behavior. Canary added a Host Hotel Systems integration and made the Inc. 5000.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/8_20_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive Wins 2026 ADWEEK Tech Stack Award for Best Agentic AI Platform (4 Aug)",
+            "Attentive Launches AI Grow to Supercharge List and Revenue Growth (19 Aug)"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "Canary Technologies and Host Hotel Systems Announce New Integration (4 Aug)",
+            "Canary Technologies Named to the 2026 Inc. 5000 List (13 Aug)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "summary": "A quiet month\n\nOne Canary hotel rollout and an Attentive research report.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/7_23_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Holiday Shopping Starts Earlier, Raising the Stakes for Brands, New Attentive Research Finds (30 Jul)"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "Hotel Indigo Bali Seminyak Beach Taps Canary To Elevate the Guest Experience With AI (7 Jul)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "summary": "Canary launches an Agentic Sales Coordinator\n\nCanary's new AI handles hotel group and event sales from first inquiry to confirmed booking. A busy month for Canary overall, with an Oracle marketplace listing and a Spanish PMS partnership. Attentive shipped Brand Voice 2.0.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/6_25_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive Launches Brand Voice 2.0 (30 Jun)"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "HEI Hotels & Resorts Supercharges Ancillary Revenue Streams with Canary (4 Jun)",
+            "Canary Technologies Launches Agentic Sales Coordinator for Hotel Group and Event Sales (15 Jun)",
+            "Canary Technologies' F&B Mobile Ordering Now Available on Oracle Cloud Marketplace (17 Jun)",
+            "Canary Technologies and Ulyses Cloud by Septeo Partner to Bring Hospitality-Specific AI to Spain (29 Jun)",
+            "GreenStar Hotels Elevates Sustainable Hospitality with Canary Technologies (30 Jun)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-31",
+      "summary": "Attentive unveils its agentic roadmap at Thread\n\nAI Campaigns, Predictive Analytics and a Reporting Agent, all aimed at the holiday season. Attentive also launched Visibility AI for RCS. Canary won a guest experience platform award.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/5_28_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive Launches Visibility AI for RCS for Business (20 May)",
+            "Attentive Unveils Next Generation of Agentic AI Marketing Innovation at Thread 2026 (26 May)"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "Canary Technologies Honored as the Best Guest Experience Platform of the Year (7 May)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-04-30",
+      "summary": "Canary signs two hotel groups\n\nCustomer wins only, no product launches. Braze shipped two releases.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/4_2_26",
+            "https://www.braze.com/docs/releases/2026/4_30_26"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "NDM Hospitality Selects Canary Technologies as its Guest Management System (9 Apr)",
+            "Sri Panwa Phuket Introduces Mobile-First Guest Engagement With Canary Technologies (16 Apr)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-31",
+      "summary": "Canary launches Hospitality AI Agent Studio\n\nHotels can now build and deploy their own AI agents from templates such as Front Desk and Concierge. Canary also launched F&B Mobile Ordering and won two HotelTechAwards.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/3_5_26"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "Canary Technologies Launches Hospitality AI Agent Studio (3 Mar)",
+            "Canary Technologies Launches F&B Mobile Ordering (12 Mar)",
+            "Canary Named Best Cybersecurity & Fraud Prevention Solution in 2026 HotelTechAwards (30 Mar)",
+            "Canary Mobile Check-In Named Best Contactless Check-In by 2026 HotelTechAwards (31 Mar)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "summary": "A quiet month\n\nOne Attentive research report and the monthly Braze release.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/2_5_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Q1 Is a Critical Window for Brand Loyalty as AI Changes How Consumers Shop (4 Feb)"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-01-31",
+      "summary": "Attentive takes Two-Tap to desktop\n\nAttentive extended its two-tap sign-up to desktop shoppers and added iOS 26 inbox visibility tools. Canary brought its platform to Castle Resorts in Hawaii and New Zealand.",
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/1_8_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "Attentive Expands Patented Two-Tap, Adds New Solutions for Omnichannel Visibility and Compliance (29 Jan)"
+          ]
+        },
+        {
+          "name": "Canary",
+          "url": "https://www.canarytechnologies.com/press",
+          "new": [
+            "Castle Resorts & Hotels Brings Digital-First Experiences to Guests with Canary (22 Jan)"
           ]
         }
       ]

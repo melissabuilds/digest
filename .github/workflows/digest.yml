@@ -2,10 +2,15 @@ name: Competitor digest
 
 on:
   schedule:
-    # Mondays at 13:37 UTC (8:37am ET in winter, 9:37am ET in summer).
+    # Weekdays at 13:37 UTC (8:37am ET in winter, 9:37am ET in summer).
     # GitHub runs cron in UTC only and does not follow daylight saving.
-    - cron: "37 13 * * 1"
+    - cron: "37 13 * * 1-5"
   workflow_dispatch:
+    inputs:
+      backfill:
+        description: "Fill in release details for past months (one-off)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,7 +32,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Optional. Leave unset and you get the plain diff.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python3 digest.py
+        run: python3 digest.py ${{ inputs.backfill && '--backfill-details' || '' }}
 
       - name: Save what we saw this week
         run: |

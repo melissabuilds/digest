@@ -70,9 +70,13 @@
           "name": "Klaviyo",
           "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "Amplitude connector in Composer (2026-11-06)",
-            "Supermetrics connector in Composer (2026-11-06)",
-            "Composer connects to Airtable"
+            "Composer GA announcement - Oct 2026 (2026-11-09)",
+            "Klaviyo (2026-11-10)",
+            "Klaviyo DE (2026-11-10)",
+            "Klaviyo ES (2026-11-10)",
+            "Klaviyo FR (2026-11-10)",
+            "Klaviyo IT (2026-11-10)",
+            "Klaviyo UK (2026-11-10)"
           ]
         }
       ]
@@ -650,6 +654,14 @@
               ]
             }
           }
+        },
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Klaviyo AU (2026-03-26)",
+            "Klaviyo SG (2026-03-26)"
+          ]
         }
       ]
     },

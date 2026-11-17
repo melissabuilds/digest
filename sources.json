@@ -11,8 +11,15 @@
     "link_pattern": "/press-releases/"
   },
   {
-    "name": "Canary",
-    "url": "https://www.canarytechnologies.com/press",
-    "link_pattern": "/press/"
+    "name": "Attentive",
+    "key": "Attentive release notes",
+    "type": "zendesk",
+    "url": "https://help.attentive.com/api/v2/help_center/en-us/sections/41724068404500/articles.json",
+    "link": "https://help.attentive.com/hc/en-us/sections/41724068404500-Release-Notes"
+  },
+  {
+    "name": "Klaviyo",
+    "url": "https://www.klaviyo.com/whats-new",
+    "dated": true
   }
 ]

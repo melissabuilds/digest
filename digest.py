@@ -54,7 +54,11 @@ NOISE = {
 def fetch(url: str, timeout: int = 30) -> str:
     """GET a URL and return decoded text."""
     req = urllib.request.Request(
-        url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,*/*"}
+        url,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "text/html,application/json;q=0.9,*/*;q=0.8",
+        },
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         raw = resp.read()
@@ -94,6 +98,56 @@ def extract(markup: str, base_url: str, link_pattern: str | None) -> list[str]:
                     entries.append(url)
 
     return entries
+
+
+DATE_RE = re.compile(r"\b(20\d\d-\d\d-\d\d)\b")
+
+
+def extract_dated(markup: str) -> list[tuple[str, str]]:
+    """Read a "what's new" page where each update is a heading followed by a date.
+
+    Returns (date, title) pairs, e.g. ("2026-10-13", "The new Composer is live").
+    """
+    stripped = re.sub(rf"<({BLOCK_TAGS})\b[\s\S]*?</\1>", " ", markup, flags=re.I)
+    pairs: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+    headings = list(re.finditer(r"<h([2-4])\b[^>]*>(.*?)</h\1>", stripped, flags=re.S | re.I))
+    for i, m in enumerate(headings):
+        title = re.sub(r"\s+", " ", html_mod.unescape(TAG_RE.sub(" ", m.group(2)))).strip()
+        if not (3 <= len(title) <= 200) or title.lower() in NOISE:
+            continue
+        end = headings[i + 1].start() if i + 1 < len(headings) else len(stripped)
+        found = DATE_RE.search(TAG_RE.sub(" ", stripped[m.end():end]))
+        if found and (found.group(1), title) not in seen:
+            seen.add((found.group(1), title))
+            pairs.append((found.group(1), title))
+    return pairs
+
+
+def extract_zendesk(raw: str, limit: int = 2) -> tuple[list[str], dict[str, dict[str, list[str]]]]:
+    """Read a Zendesk help center articles feed (the JSON API).
+
+    Release notes there are one article per quarter, updated as features ship.
+    Returns entries like "Release Notes - Q3 2026: AI Grow" for diffing, plus
+    the features of each article grouped by section, for the report.
+    """
+    data = json.loads(raw)
+    articles = sorted(
+        data.get("articles", []),
+        key=lambda a: a.get("updated_at") or "",
+        reverse=True,
+    )[:limit]
+    entries: list[str] = []
+    details: dict[str, dict[str, list[str]]] = {}
+    for article in articles:
+        title = article.get("title", "").strip()
+        grouped = sections("<body>" + (article.get("body") or "") + "</body>")
+        if not grouped:
+            continue
+        details[article.get("html_url", title)] = grouped
+        for features in grouped.values():
+            entries.extend(f"{title}: {feature}" for feature in features)
+    return entries, details
 
 
 def load_json(path: Path, default):
@@ -293,6 +347,43 @@ def backfill_details(sources: list[dict]) -> int:
     return 0
 
 
+def backfill_dated(sources: list[dict]) -> None:
+    """File every dated update from "what's new" pages into its month in digest.json.
+
+    For each month the page covers, the competitor's items are replaced with what
+    the page lists, so running this twice gives the same result.
+    """
+    digest = load_json(DIGEST_FILE, {"updated": None, "runs": []})
+    for source in sources:
+        if not source.get("dated"):
+            continue
+        name, url = source["name"], source["url"]
+        print(f"backfilling {name} from {url}")
+        try:
+            pairs = extract_dated(fetch(url))
+        except Exception as exc:  # noqa: BLE001
+            print(f"  fetch failed: {exc}", file=sys.stderr)
+            continue
+        this_year = str(date.today().year)
+        by_month: dict[str, list[str]] = {}
+        for day, title in sorted(pairs):
+            if not day.startswith(this_year):
+                continue
+            by_month.setdefault(day[:7], []).append(f"{title} ({day})")
+        for month, items in by_month.items():
+            run = next((r for r in digest["runs"] if r["date"].startswith(month)), None)
+            if run is None:
+                run = {"date": f"{month}-28", "summary": None, "findings": []}
+                digest["runs"].append(run)
+            run["findings"] = [f for f in run["findings"] if f["name"] != name]
+            run["findings"].append({"name": name, "url": url, "new": items})
+            print(f"  {month}: {len(items)} updates")
+    digest["runs"].sort(key=lambda r: r["date"], reverse=True)
+    DIGEST_FILE.write_text(
+        json.dumps(digest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+
+
 def main() -> int:
     dry_run = "--dry-run" in sys.argv
 
@@ -302,6 +393,7 @@ def main() -> int:
         return 1
 
     if "--backfill-details" in sys.argv:
+        backfill_dated(sources)
         return backfill_details(sources)
 
     state = load_json(STATE_FILE, {})
@@ -310,37 +402,64 @@ def main() -> int:
 
     for source in sources:
         name, url = source["name"], source["url"]
-        print(f"checking {name}")
+        # Several sources can report under one competitor name. "key" keeps
+        # their memories separate in state.json.
+        key = source.get("key", name)
+        print(f"checking {key}")
         try:
             markup = fetch(url)
         except Exception as exc:  # noqa: BLE001 - one bad site must not stop the rest
             print(f"  fetch failed: {exc}", file=sys.stderr)
             continue
 
-        entries = extract(markup, url, source.get("link_pattern"))
-        if not entries:
-            # No headings or links worth tracking. Fall back to the page text.
-            entries = [s.strip() for s in clean_text(markup).split(". ") if len(s) > 40]
+        zendesk_details: dict = {}
+        if source.get("type") == "zendesk":
+            try:
+                entries, zendesk_details = extract_zendesk(markup)
+            except (json.JSONDecodeError, AttributeError) as exc:
+                print(f"  not a help center feed: {exc}", file=sys.stderr)
+                continue
+        elif source.get("dated"):
+            entries = [f"{title} ({day})" for day, title in extract_dated(markup)]
+        else:
+            entries = extract(markup, url, source.get("link_pattern"))
+            if not entries:
+                # No headings or links worth tracking. Fall back to the page text.
+                entries = [s.strip() for s in clean_text(markup).split(". ") if len(s) > 40]
         if not entries:
             print("  nothing extracted, skipping", file=sys.stderr)
             continue
 
-        previous = state.get(name, {}).get("entries", [])
+        previous = state.get(key, {}).get("entries", [])
         if not previous:
-            baselines.append(name)
+            baselines.append(key)
             print(f"  baseline: {len(entries)} entries")
         else:
-            new = [e for e in entries if e not in set(previous)]
+            seen = set(previous)
+            new = [e for e in entries if e not in seen]
             if new:
-                finding = {"name": name, "url": url, "new": new}
+                finding = {"name": name, "url": source.get("link", url), "new": new}
                 if source.get("follow_new_links"):
                     finding["details"] = follow([e for e in new if e.startswith("http")])
+                elif zendesk_details:
+                    # Report only the features that are new, grouped as on the page.
+                    fresh = set(new)
+                    trimmed = {}
+                    for article_url, grouped in zendesk_details.items():
+                        for section, feats in grouped.items():
+                            keep = [f for f in feats if any(e.endswith(": " + f) and e in fresh for e in new)]
+                            if keep:
+                                trimmed.setdefault(article_url, {})[section] = keep
+                    finding["details"] = trimmed
+                    # Same shape as Braze: the article is the new item,
+                    # its new features sit underneath it.
+                    finding["new"] = list(trimmed) or new
                 findings.append(finding)
                 print(f"  {len(new)} new")
             else:
                 print("  no change")
 
-        state[name] = {"entries": entries, "checked": date.today().isoformat()}
+        state[key] = {"entries": entries, "checked": date.today().isoformat()}
 
     if not dry_run:
         STATE_FILE.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")

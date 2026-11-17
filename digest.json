@@ -3,7 +3,7 @@
   "runs": [
     {
       "date": "2026-11-16",
-      "summary": "Braze makes properties and franchises first-class data\n\nBraze Account objects went generally available on 12 November. Brands can model the business behind their users, including properties, franchises and households, with hierarchies between them. Multi-property data modelling is the structural advantage hospitality CRM has relied on, and it is now native in a consumer marketing platform. The same release added Skills and External MCP servers, pushing the Braze agent layer toward an integration surface.\n\nAttentive's new CEO Eric Miao set out an AI-first vision for the company on 9 November. Expect a roadmap shift.",
+      "summary": "Braze makes properties and franchises first-class data\n\nBraze Account objects went generally available on 12 November, letting brands model properties, franchises and households with hierarchies between them. Multi-property data modelling is the structural advantage hospitality CRM has relied on, and it is now native in a consumer marketing platform. The release also added Skills and External MCP servers.\n\nKlaviyo kept wiring Composer into outside data, with Amplitude, Supermetrics and Airtable connectors. Attentive's new CEO set out an AI-first vision on 9 November.",
       "findings": [
         {
           "name": "Braze",
@@ -65,53 +65,28 @@
           "new": [
             "Attentive's New CEO Eric Miao Sets New Vision to Transform How Brands Market to Consumers (9 Nov)"
           ]
+        },
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Amplitude connector in Composer (2026-11-06)",
+            "Supermetrics connector in Composer (2026-11-06)",
+            "Composer connects to Airtable"
+          ]
         }
       ]
     },
     {
       "date": "2026-10-31",
-      "summary": "Canary publishes a 10M-interaction study on AI and hotel revenue\n\nCanary's study links AI-powered guest engagement to higher hotel revenue, better personalization and happier guests. No product launch, but a data-backed sales argument aimed at the buyers Revinate sells to. Canary also collected two awards and an ELAF Group rollout. Attentive changed CEO and signed Pacsun.",
+      "summary": "Klaviyo's AI marketer, Composer, goes generally available\n\nComposer can answer questions about account data in plain language and draft a whole flow, with the emails, texts and push messages inside it, from a written prompt. It does not publish without sign-off. Around it Klaviyo shipped quiet hours for text campaigns, Custom Objects for every account, Meta Ads data inside Composer, and Salesforce sync for up to six objects.\n\nAttentive changed CEO and signed Pacsun. Braze shipped its 15 October release.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/10_15_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/10_15_26": {
-              "Data & Reporting": [
-                "Industry Benchmarks dashboard",
-                "Teams support for Catalogs",
-                "Messaging Observability"
-              ],
-              "BrazeAI TM": [
-                "BrazeAI Decisioning Studio™ Go",
-                "Content Optimizer",
-                "Agentic Standards"
-              ],
-              "Orchestration": [
-                "Message Prioritization"
-              ],
-              "Channels & Touchpoints": [
-                "Twilio RCS support",
-                "Email NPS Survey block",
-                "Apex proxying for new custom domains",
-                "IP-based bot click filtering",
-                "Web Targeting for Banners",
-                "Real-time updates for Content Cards",
-                "Shopify historical backfill updates"
-              ],
-              "Partnerships": [
-                "Google DV360 – Canvas Audience Sync",
-                "Bidease - Message Orchestration - Retargeting"
-              ],
-              "SDK": [
-                "SDK breaking updates",
-                "Summary of recent SDK features and fixes"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -122,63 +97,55 @@
           ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "ELAF Group Brings AI-Powered Guest Service to Its Hotels with Canary Technologies (13 Oct)",
-            "Canary Technologies Wins AI & Digital Innovation Impact Award at TIS 2026 (22 Oct)",
-            "Canary Technologies Recognized as a 2026 Inc. Power Partner Awards Winner (22 Oct)",
-            "AI-Powered Guest Engagement Linked to Higher Hotel Revenue, Study of 10+ Million Interactions Finds (28 Oct)"
+            "The new Composer is live: Klaviyo's AI marketing agent, generally available (2026-10-13)",
+            "Ask Composer about your data in plain language, RFM by category, social posts linked to sales (2026-10-13)",
+            "Quiet hours for text message campaigns",
+            "Custom Objects available to all accounts",
+            "Customer Hub preview on your live site",
+            "One CSV export for email, SMS, push and WhatsApp campaign analytics",
+            "Ask Composer from anywhere in Klaviyo (2026-10-28)",
+            "Composer connects to Meta Ads (2026-10-28)",
+            "Brand styles from website in Composer (2026-10-28)",
+            "Composer creates omnichannel campaigns (2026-10-29)",
+            "Sync up to 6 objects with the Salesforce integration (2026-10-30)",
+            "Custom events from skills in Customer Agent (2026-10-30)"
           ]
         }
       ]
     },
     {
       "date": "2026-09-30",
-      "summary": "Attentive adds Lifecycle Intelligence to AI Pro\n\nProduct Affinity segments went generally available, with RFM and customer lifetime value in beta. Attentive is building value-based segmentation into its AI tier, the same territory as hotel guest value scoring.",
+      "summary": "Attentive ships an MCP server and Lifecycle Intelligence\n\nThe Q3 release notes add Attentive MCP, AI Grow going generally available, guided CSV imports, program-level return reporting and automatic suppression of unsubscribes and bounces. AI Pro gained Lifecycle Intelligence: Product Affinity generally available, RFM and lifetime value in beta.\n\nKlaviyo went headless, opening its platform to agents and to marketers working in other tools. Both are preparing to be operated by AI agents rather than only by people in their interfaces.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/9_17_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://help.attentive.com/hc/en-us/sections/41724068404500-Release-Notes",
+          "new": [
+            "https://help.attentive.com/hc/en-us/articles/51175161063316-Release-Notes-Q3-2026"
           ],
           "details": {
-            "https://www.braze.com/docs/releases/2026/9_17_26": {
-              "Data & Reporting": [
-                "Push Performance dashboards: Push Analytics Hub",
-                "Cloud Data Ingestion visual mapper",
-                "eCommerce recommended events (basic and nested properties)",
-                "Usage alerts"
+            "https://help.attentive.com/hc/en-us/articles/51175161063316-Release-Notes-Q3-2026": {
+              "Generally available": [
+                "AI Grow: turn more website traffic into subscribers",
+                "Sign-up bubble display logic: immediate second chance to subscribe",
+                "Guided CSV upload for subscribers and profile attributes",
+                "Program return reporting for Email and Text",
+                "Side-by-side variant results in campaigns",
+                "Automatic suppression of unsubscribes, spam complaints and hard bounces",
+                "Attentive MCP"
               ],
-              "BrazeAI TM": [
-                "Braze MCP server",
-                "Operator can create and edit drag-and-drop designs",
-                "Knowledge sources",
-                "Content Optimizer step updates"
-              ],
-              "Orchestration": [
-                "Custom Canvas alerts"
-              ],
-              "Channels & Touchpoints": [
-                "Connected Content debugger",
-                "Multi-language support for webhooks",
-                "SCIM Provisioning for Okta and Microsoft Entra ID",
-                "Shopify segments",
-                "Shopify SMS double opt-in",
-                "Banners in Shopify standard integrations",
-                "Manage Subscriptions block",
-                "Liquid tags for subscription group unsubscribes and WhatsApp username",
-                "WhatsApp carousel messages—API sending",
-                "Multiple link shortening domains"
-              ],
-              "Partnerships": [
-                "Globalization Partners International (GPI) - Message Personalization - Localization",
-                "GrowSurf - Message Personalization - Referrals"
-              ],
-              "SDK": [
-                "SDK breaking updates",
-                "Summary of recent SDK features and fixes"
+              "Open beta": [
+                "Two-tap for RCS for Business"
               ]
             }
           }
@@ -191,59 +158,26 @@
             "Catalyst Brands Moves Off Legacy Martech Stack to Power 1:1 Personalization (23 Sep)",
             "AI Is Influencing What Shoppers Buy, New Attentive Research Finds (30 Sep)"
           ]
+        },
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Klaviyo goes headless, opening its platform to agents and marketers wherever they work (2026-09-09)"
+          ]
         }
       ]
     },
     {
       "date": "2026-08-31",
-      "summary": "Attentive AI Grow goes generally available\n\nAI Grow personalizes when shoppers see sign-up units based on their browsing behavior. Canary added a Host Hotel Systems integration and made the Inc. 5000.",
+      "summary": "Attentive AI Grow goes generally available\n\nAI Grow personalizes when shoppers see sign-up units based on browsing behavior. Klaviyo moved existing SMS customers to per-message pricing and updated Composer's analytics agent.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/8_20_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/8_20_26": {
-              "Data & Reporting": [
-                "Cloud Data Ingestion SQL editor",
-                "Cloud Data Ingestion visual mapper",
-                "Cloud Data Ingestion for Google Cloud Storage and Azure Blob Storage",
-                "Cloud Data Ingestion to BrazeAI Decisioning Studio"
-              ],
-              "BrazeAI TM": [
-                "Operator can navigate the dashboard for you",
-                "Operator can act on more dashboard pages",
-                "Operator can create and edit Canvases",
-                "Content Optimizer step updates"
-              ],
-              "Orchestration": [
-                "Workspace quiet hours",
-                "Custom Canvas alerts",
-                "Automatic Team assignment"
-              ],
-              "Channels & Touchpoints": [
-                "Connected Content debugger",
-                "In-app message and landing page surveys",
-                "KakaoTalk carousel message",
-                "WhatsApp Template Builder improvements",
-                "Custom form blocks and JavaScript bridge for landing pages",
-                "Multi-step landing page forms",
-                "Manage Subscriptions block for landing pages"
-              ],
-              "Partnerships": [
-                "Audience Sync: Google Data Manager API",
-                "Amazon Bedrock - AI Model Provider",
-                "Bynder - Message Orchestration - CMS and DAM",
-                "Multiplied Media - Message Personalization - Visual and Interactive Content"
-              ],
-              "SDK": [
-                "SDK breaking updates",
-                "Summary of recent SDK features and fixes"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -254,59 +188,25 @@
           ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "Canary Technologies and Host Hotel Systems Announce New Integration (4 Aug)",
-            "Canary Technologies Named to the 2026 Inc. 5000 List (13 Aug)"
+            "Composer analytics agent updates (2026-08-11)",
+            "Existing SMS customers move to per-message pricing (from 2026-08-13)"
           ]
         }
       ]
     },
     {
       "date": "2026-07-31",
-      "summary": "A quiet month\n\nOne Canary hotel rollout and an Attentive research report.",
+      "summary": "Klaviyo moves SMS to per-message pricing\n\nNew accounts pay per message from 13 July, priced by channel, country and number type, with existing customers following in August. Klaviyo also launched social messaging. Attentive published holiday shopping research.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/7_23_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/7_23_26": {
-              "Data & Reporting": [
-                "Messaging Observability",
-                "CSV Custom Events mapper",
-                "Catalogs free storage now supports up to 500 MB"
-              ],
-              "BrazeAI TM": [
-                "Operator can now update Settings pages for you",
-                "Remote Braze MCP server"
-              ],
-              "Orchestration": [
-                "Teams audience scoping"
-              ],
-              "Channels & Touchpoints": [
-                "Survey rating scale for in-app messages and landing pages",
-                "WhatsApp limited time offer templates",
-                "Shopify self-serve SDK version upgrade",
-                "HTML editor for Banners",
-                "Replace a file in the media library",
-                "Grid view for the media library",
-                "Shareable Preview support for more channels",
-                "Push credentials update API"
-              ],
-              "Partnerships": [
-                "Refiner - Surveys",
-                "Stayfilm - Visual and Interactive Content",
-                "Validity - Data and Analytics"
-              ],
-              "SDK": [
-                "SDK breaking updates"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -316,62 +216,25 @@
           ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "Hotel Indigo Bali Seminyak Beach Taps Canary To Elevate the Guest Experience With AI (7 Jul)"
+            "Klaviyo enters the (social) chat (2026-07-07)",
+            "SMS priced per message for new accounts (2026-07-13)"
           ]
         }
       ]
     },
     {
       "date": "2026-06-30",
-      "summary": "Canary launches an Agentic Sales Coordinator\n\nCanary's new AI handles hotel group and event sales from first inquiry to confirmed booking. A busy month for Canary overall, with an Oracle marketplace listing and a Spanish PMS partnership. Attentive shipped Brand Voice 2.0.",
+      "summary": "Klaviyo launches AI agents that work together\n\nKlaviyo introduced coordinated AI agents, gave Customer Agent tools to read order history, segments and predictions during conversations, previewed Composer, and added a cart with recommendations to Customer Hub. Attentive shipped Brand Voice 2.0.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/6_25_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/6_25_26": {
-              "Data & Reporting": [
-                "Metric name update for Content Cards and Banners",
-                "User deletion",
-                "Data point exclusions",
-                "Event History tab",
-                "Deliverability Center surfaces Microsoft SNDS data for Amazon SES customers"
-              ],
-              "BrazeAI TM": [
-                "Unified BrazeAI assistants in Operator",
-                "Operator support for campaign creation and editing",
-                "Operator support for Content Blocks",
-                "Agent Console templates built with Operator",
-                "Agent Console enhancements",
-                "Edit a launched Content Optimizer step"
-              ],
-              "Channels & Touchpoints": [
-                "User dismissals for Banners",
-                "Custom click tracking for Banners",
-                "Re-eligibility for Banners",
-                "Quick Push A/B Testing",
-                "Optimize with BrazeAI™",
-                "WhatsApp test send results"
-              ],
-              "Partnerships": [
-                "Convercus - Data and Analytics - Loyalty",
-                "Copy Pastd - Message Orchestration - Templates",
-                "Databricks Mosaic - AI Model Providers",
-                "DinMo - Data and Analytics - Reverse ETL",
-                "EmailShepherd - Message Orchestration - Templates",
-                "Talkable - Message Personalization - Referrals"
-              ],
-              "SDK": [
-                "SDK breaking updates"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -381,56 +244,27 @@
           ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "HEI Hotels & Resorts Supercharges Ancillary Revenue Streams with Canary (4 Jun)",
-            "Canary Technologies Launches Agentic Sales Coordinator for Hotel Group and Event Sales (15 Jun)",
-            "Canary Technologies' F&B Mobile Ordering Now Available on Oracle Cloud Marketplace (17 Jun)",
-            "Canary Technologies and Ulyses Cloud by Septeo Partner to Bring Hospitality-Specific AI to Spain (29 Jun)",
-            "GreenStar Hotels Elevates Sustainable Hospitality with Canary Technologies (30 Jun)"
+            "Cart in Customer Hub (2026-06-23)",
+            "Customer Agent profile context tools (2026-06-30)",
+            "Composer preview (2026-06-30)",
+            "Klaviyo launches AI agents that work together (2026-06-30)"
           ]
         }
       ]
     },
     {
       "date": "2026-05-31",
-      "summary": "Attentive unveils its agentic roadmap at Thread\n\nAI Campaigns, Predictive Analytics and a Reporting Agent, all aimed at the holiday season. Attentive also launched Visibility AI for RCS. Canary won a guest experience platform award.",
+      "summary": "Attentive and Klaviyo both go deeper on agents\n\nAttentive unveiled AI Campaigns, Predictive Analytics and a Reporting Agent at Thread. Klaviyo shipped Custom Skills for Customer Agent, agentic workflows in Claude, and MCP tools for designing emails in outside AI assistants, plus product feeds in SMS and RCS and WhatsApp channel affinity.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/5_28_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/5_28_26": {
-              "Data & Reporting": [
-                "Push Performance dashboard",
-                "Geolocation fields in catalog selections",
-                "Banner and RCS for Report Builder",
-                "ecommerce.cart_updated event actions"
-              ],
-              "BrazeAI TM": [
-                "Content Optimizer for SMS, MMS, and RCS messages"
-              ],
-              "Orchestration": [
-                "Workspace time zones"
-              ],
-              "Channels & Touchpoints": [
-                "WhatsApp inbound_profile_name",
-                "Orphaned SMS subscription states"
-              ],
-              "Partnerships": [
-                "Chord - Customer Data Platform",
-                "Better Email - Templates",
-                "DailyPlay - Dynamic Content"
-              ],
-              "SDK": [
-                "SDK breaking updates"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -441,17 +275,23 @@
           ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "Canary Technologies Honored as the Best Guest Experience Platform of the Year (7 May)"
+            "Klaviyo + Anthropic: agentic workflows come to Claude (2026-05-07)",
+            "Custom Skills for Customer Agent (2026-05-19)",
+            "Klaviyo on AWS Marketplace (2026-05-19)",
+            "Product feeds in SMS and RCS",
+            "Channel affinity expanded to WhatsApp",
+            "Activity Log generally available",
+            "MCP Server tools: design emails in Claude or ChatGPT, land editable templates (2026-05-29)"
           ]
         }
       ]
     },
     {
       "date": "2026-04-30",
-      "summary": "Canary signs two hotel groups\n\nCustomer wins only, no product launches. Braze shipped two releases.",
+      "summary": "Klaviyo connects Canva to its template library\n\nCanva emails now land in Klaviyo as ready templates. Otherwise quiet: Braze shipped two releases.",
       "findings": [
         {
           "name": "Braze",
@@ -459,139 +299,43 @@
           "new": [
             "https://www.braze.com/docs/releases/2026/4_2_26",
             "https://www.braze.com/docs/releases/2026/4_30_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/4_2_26": {
-              "Data & Reporting": [
-                "New Banner channel fields in Currents and Datashare events",
-                "Mixpanel EU and India data center support for Currents",
-                "Reusable Cloud Data Ingestion (CDI) sources and syncs"
-              ],
-              "BrazeAI TM": [
-                "File support tickets from BrazeAI Operator TM"
-              ],
-              "Orchestration": [
-                "Multi-language translations",
-                "Canvas Context enhancements"
-              ],
-              "Channels & Touchpoints": [
-                "KakaoTalk",
-                "Banners in Canvas"
-              ],
-              "Partnerships": [
-                "CataBoom - Message Personalization - Visual and Interactive Content",
-                "Denada - Message Orchestration - Templates",
-                "Poq - eCommerce - Mobile app platform",
-                "The Trade Desk – Canvas Audience Sync"
-              ],
-              "SDK": [
-                "Connect your Integrated Development Environment (IDE) to the Docs MCP",
-                "SDK breaking updates"
-              ]
-            },
-            "https://www.braze.com/docs/releases/2026/4_30_26": {
-              "Data & Reporting": [
-                "Quick User Add for individual profile creation",
-                "Zero-copy CDI syncs for Canvas triggers",
-                "eCommerce recommended events"
-              ],
-              "Currents and Datashare": [
-                "New Banner and WhatsApp Currents updates"
-              ],
-              "Orchestration": [
-                "Multi-language translations",
-                "Granular permissions migration",
-                "Send to Destination Canvas component",
-                "Canvas Context enhancements",
-                "Delivery validation advancement behavior for Message steps",
-                "Workspace messaging rate limits"
-              ],
-              "Channels & Touchpoints": [
-                "WhatsApp Template Builder",
-                "Shopify product tags, metafields, and collections"
-              ],
-              "Partnerships": [
-                "GRAVTY - Data and Analytics - Loyalty"
-              ],
-              "SDK": [
-                "SDK breaking updates"
-              ]
-            }
-          }
+          ]
         },
         {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
           "new": [
-            "NDM Hospitality Selects Canary Technologies as its Guest Management System (9 Apr)",
-            "Sri Panwa Phuket Introduces Mobile-First Guest Engagement With Canary Technologies (16 Apr)"
+            "Design in Canva, send in Klaviyo (2026-04-22)"
           ]
         }
       ]
     },
     {
       "date": "2026-03-31",
-      "summary": "Canary launches Hospitality AI Agent Studio\n\nHotels can now build and deploy their own AI agents from templates such as Front Desk and Concierge. Canary also launched F&B Mobile Ordering and won two HotelTechAwards.",
+      "summary": "Attentive adds pick-a-winner to Journey A/B tests\n\nAttentive's Q1 release notes added automated winners for Journey tests, personalized email headers by loyalty tier and behavior, and a bulk profile API. Braze shipped its March release.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/3_5_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://help.attentive.com/hc/en-us/sections/41724068404500-Release-Notes",
+          "new": [
+            "https://help.attentive.com/hc/en-us/articles/46618601874836-Release-Notes-Q1-2026"
           ],
           "details": {
-            "https://www.braze.com/docs/releases/2026/3_5_26": {
-              "Data & Reporting": [
-                "New data center",
-                "Context variables",
-                "Cloud Data Ingestion sources",
-                "Additional fields for Currents and Data Share events",
-                "Campaign and Canvas fields for Snowflake Data Share",
-                "CSV pre-import validation and error reporting",
-                "Messaging Observability"
-              ],
-              "BrazeAI TM": [
-                "Braze Agents in Agent Console"
-              ],
-              "Orchestration": [
-                "Granular user permissions",
-                "Channel-based rate limiting",
-                "Canvas Context step"
-              ],
-              "Channels & Touchpoints": [
-                "Translate locales in Content Blocks"
-              ],
-              "Partnerships": [
-                "Algolia - Search Recommendations",
-                "Anthropic - AI Model Provider",
-                "Canva - Message Personalization - Creative Studio",
-                "DOTS.ECO - Rewards",
-                "Figma - Message Personalization - Creative Studio",
-                "Flybuy - Message Personalization - Location",
-                "Google Gemini - AI Model Provider",
-                "Limbik - Message Personalization - Personalization Engines",
-                "Linkrunner - Message Orchestration - Attribution",
-                "Mailizio - Message Orchestration - Templates",
-                "Open Loyalty - Data and Analytics - Loyalty",
-                "OpenAI - AI Model Provider",
-                "Shopgate - Channels",
-                "Splio - Data and Analytics - Cohort Import"
-              ],
-              "SDK": [
-                "SDK breaking updates"
+            "https://help.attentive.com/hc/en-us/articles/46618601874836-Release-Notes-Q1-2026": {
+              "Q1 2026 release notes": [
+                "A/B testing in Journeys: pick a winner",
+                "Personalized email headers by loyalty tier and behavior",
+                "Bulk User Profile API"
               ]
             }
           }
-        },
-        {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
-          "new": [
-            "Canary Technologies Launches Hospitality AI Agent Studio (3 Mar)",
-            "Canary Technologies Launches F&B Mobile Ordering (12 Mar)",
-            "Canary Named Best Cybersecurity & Fraud Prevention Solution in 2026 HotelTechAwards (30 Mar)",
-            "Canary Mobile Check-In Named Best Contactless Check-In by 2026 HotelTechAwards (31 Mar)"
-          ]
         }
       ]
     },
@@ -604,44 +348,7 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/2_5_26"
-          ],
-          "details": {
-            "https://www.braze.com/docs/releases/2026/2_5_26": {
-              "BrazeAI TM": [
-                "Content Optimizer"
-              ],
-              "Data & Reporting": [
-                "eCommerce recommended events"
-              ],
-              "Channels & Touchpoints": [
-                "Translate locales in banners",
-                "Configure width for drag-and-drop Content Blocks",
-                "Use automated IP warming"
-              ],
-              "Partnerships": [
-                "LinkedIn – Canvas Audience Sync",
-                "Oracle Crowdtwist - Data & analytics",
-                "Fullstory - Dynamic Content",
-                "Open Loyalty - Data & analytics",
-                "DOTS.ECO - Extensions",
-                "Mailizio - Message orchestration"
-              ],
-              "APIs": [
-                "Media Library POST APIs"
-              ],
-              "Currents and Datashare": [
-                "Agent Console Events for Storage destinations and Datashare",
-                "New ‘Retry’ events for individual channels",
-                "Add new ‘time_ms’ field to TokenStateChange event",
-                "Send Anonymous user to Tealium Destinations",
-                "Send Anonymous user to CustomHTTP Destinations",
-                "Email Open event — “machine_open” field"
-              ],
-              "SDK": [
-                "SDK breaking updates"
-              ]
-            }
-          }
+          ]
         },
         {
           "name": "Attentive",
@@ -654,28 +361,28 @@
     },
     {
       "date": "2026-01-31",
-      "summary": "Attentive takes Two-Tap to desktop\n\nAttentive extended its two-tap sign-up to desktop shoppers and added iOS 26 inbox visibility tools. Canary brought its platform to Castle Resorts in Hawaii and New Zealand.",
+      "summary": "Attentive takes Two-Tap to desktop\n\nAttentive extended its two-tap sign-up to desktop and shipped AI email template generation, audience size controls and automated state quiet hours alongside it.",
       "findings": [
         {
           "name": "Braze",
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/1_8_26"
+          ]
+        },
+        {
+          "name": "Attentive",
+          "url": "https://help.attentive.com/hc/en-us/sections/41724068404500-Release-Notes",
+          "new": [
+            "https://www.businesswire.com/news/home/20260129614400/en"
           ],
           "details": {
-            "https://www.braze.com/docs/releases/2026/1_8_26": {
-              "Data & Reporting": [
-                "Updates to Currents events",
-                "Export sync logs by all rows"
-              ],
-              "Channels & Touchpoints": [
-                "Bring Your Own (BYO) WhatsApp connector",
-                "Banners in Canvas",
-                "Dynamic BCC",
-                "Channel-based rate limits"
-              ],
-              "Partnerships": [
-                "LILT - Localization"
+            "https://www.businesswire.com/news/home/20260129614400/en": {
+              "Announced with Two-Tap for desktop": [
+                "AI template generation for email",
+                "Barcode generation for email",
+                "Audience size controls",
+                "Automated state quiet hours and improved location detection"
               ]
             }
           }
@@ -685,13 +392,6 @@
           "url": "https://www.attentive.com/press",
           "new": [
             "Attentive Expands Patented Two-Tap, Adds New Solutions for Omnichannel Visibility and Compliance (29 Jan)"
-          ]
-        },
-        {
-          "name": "Canary",
-          "url": "https://www.canarytechnologies.com/press",
-          "new": [
-            "Castle Resorts & Hotels Brings Digital-First Experiences to Guests with Canary (22 Jan)"
           ]
         }
       ]

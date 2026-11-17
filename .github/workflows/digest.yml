@@ -2,8 +2,9 @@ name: Competitor digest
 
 on:
   schedule:
+    # Mondays at 13:37 UTC (8:37am ET in winter, 9:37am ET in summer).
     # GitHub runs cron in UTC only and does not follow daylight saving.
-       - cron: "37 13 * * 1-5"
+    - cron: "37 13 * * 1"
   workflow_dispatch:
 
 permissions:

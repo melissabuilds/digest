@@ -100,11 +100,96 @@ def extract(markup: str, base_url: str, link_pattern: str | None) -> list[str]:
     return entries
 
 
-DATE_RE = re.compile(r"\b(20\d\d-\d\d-\d\d)\b")
+# Matches 2026-10-13 on its own and inside timestamps like 2026-10-13T00:00:00Z.
+DATE_RE = re.compile(r"(?<!\d)(20\d\d-\d\d-\d\d)(?!\d)")
+TITLE_KEY_RE = re.compile(
+    r'"(?:title|name|heading|headline)"\s*:\s*(?:\[\s*0\s*,\s*)?"((?:[^"\\]|\\.){3,200})"'
+)
 
 
 def extract_dated(markup: str) -> list[tuple[str, str]]:
-    """Read a "what's new" page where each update is a heading followed by a date.
+    """Read a "what's new" list of dated updates, whichever way the page ships it.
+
+    Tries two readers and keeps whichever finds more: visible headings followed
+    by a date, and data embedded in the page for the browser to draw later.
+    """
+    from_html = extract_dated_headings(markup)
+    from_data = extract_dated_data(markup)
+    return from_data if len(from_data) > len(from_html) else from_html
+
+
+TITLE_KEYS = ("title", "name", "heading", "headline")
+
+
+def _unwrap(value):
+    """Astro ships data as [0, value] and [1, [items]]. Turn that back into plain JSON."""
+    if isinstance(value, list):
+        if len(value) == 2 and value[0] == 0:
+            return _unwrap(value[1])
+        if len(value) == 2 and value[0] == 1 and isinstance(value[1], list):
+            return [_unwrap(v) for v in value[1]]
+        return [_unwrap(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _unwrap(v) for k, v in value.items()}
+    return value
+
+
+def _embedded_json(markup: str) -> list:
+    """Every JSON document embedded in the page: data scripts and Astro props."""
+    blobs = re.findall(
+        r"<script\b[^>]*(?:type=\"application/(?:ld\+)?json\"|id=\"__NEXT_DATA__\")[^>]*>([\s\S]*?)</script>",
+        markup, flags=re.I,
+    )
+    blobs += [html_mod.unescape(p) for p in re.findall(r'\bprops="([^"]*)"', markup)]
+    docs = []
+    for blob in blobs:
+        try:
+            docs.append(_unwrap(json.loads(blob)))
+        except (json.JSONDecodeError, ValueError):
+            continue
+    return docs
+
+
+def extract_dated_data(markup: str) -> list[tuple[str, str]]:
+    """Find updates in data embedded in the page. A record counts when one object
+    holds both a title and a date, so titles are never paired with a neighbour's date."""
+    pairs: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            title = next((node[k] for k in TITLE_KEYS if isinstance(node.get(k), str)), None)
+            dated = sorted(node, key=lambda k: ("date" not in k.lower() and "publish" not in k.lower()))
+            day = next(
+                (m.group(1) for k in dated if isinstance(node[k], str) for m in [DATE_RE.search(node[k])] if m),
+                None,
+            )
+            if title and day:
+                title = re.sub(r"\s+", " ", title).strip()
+                if 3 <= len(title) <= 200 and title.lower() not in NOISE and (day, title) not in seen:
+                    seen.add((day, title))
+                    pairs.append((day, title))
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    for doc in _embedded_json(markup):
+        walk(doc)
+    return pairs
+
+
+def describe(markup: str) -> str:
+    """One line on what a fetched page contains, for the log."""
+    levels = {f"h{n}": len(re.findall(rf"<h{n}\b", markup, flags=re.I)) for n in range(1, 5)}
+    dates = len(DATE_RE.findall(markup))
+    hints = [h for h in ("astro-island", "__NEXT_DATA__", "application/json", "application/ld+json") if h in markup]
+    return f"{len(markup)} chars, headings {levels}, {dates} dates, embedded data: {hints or 'none'}"
+
+
+def extract_dated_headings(markup: str) -> list[tuple[str, str]]:
+    """Read a page where each update is a heading followed by a date.
 
     Returns (date, title) pairs, e.g. ("2026-10-13", "The new Composer is live").
     """
@@ -204,12 +289,15 @@ def follow(urls: list[str], limit: int = 3) -> dict[str, dict[str, list[str]]]:
         if not url.startswith("http"):
             continue
         try:
-            grouped = sections(fetch(url))
+            markup = fetch(url)
         except Exception as exc:  # noqa: BLE001
-            print(f"  could not open {url}: {exc}", file=sys.stderr)
+            print(f"  could not open {url}: {exc}")
             continue
+        grouped = sections(markup)
         if grouped:
             details[url] = grouped
+        else:
+            print(f"  no features found on {url}: {describe(markup)}")
     return details
 
 
@@ -337,6 +425,7 @@ def backfill_details(sources: list[dict]) -> int:
     digest.json: no diffing, no state changes, no issue.
     """
     followable = {s["name"] for s in sources if s.get("follow_new_links")}
+    print(f"filling release details for: {', '.join(sorted(followable)) or 'no sources have follow_new_links'}")
     digest = load_json(DIGEST_FILE, {"updated": None, "runs": []})
     filled = 0
     for run in digest["runs"]:
@@ -348,6 +437,7 @@ def backfill_details(sources: list[dict]) -> int:
                 if u.startswith("http") and u not in f.get("details", {})
             ]
             if not missing:
+                print(f"  {run['date']} {f['name']}: already has details")
                 continue
             found = follow(missing, limit=len(missing))
             if found:
@@ -355,7 +445,7 @@ def backfill_details(sources: list[dict]) -> int:
                 filled += len(found)
                 print(f"  {run['date']} {f['name']}: filled {len(found)} of {len(missing)}")
             else:
-                print(f"  {run['date']} {f['name']}: nothing found", file=sys.stderr)
+                print(f"  {run['date']} {f['name']}: nothing found")
     if filled:
         DIGEST_FILE.write_text(
             json.dumps(digest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
@@ -377,10 +467,19 @@ def backfill_dated(sources: list[dict]) -> None:
         name, url = source["name"], source["url"]
         print(f"backfilling {name} from {url}")
         try:
-            pairs = extract_dated(fetch(url))
+            markup = fetch(url)
         except Exception as exc:  # noqa: BLE001
-            print(f"  fetch failed: {exc}", file=sys.stderr)
+            print(f"  fetch failed: {exc}")
             continue
+        print(f"  page: {describe(markup)}")
+        heads, data = extract_dated_headings(markup), extract_dated_data(markup)
+        print(f"  found {len(heads)} from headings, {len(data)} from embedded data")
+        pairs = data if len(data) > len(heads) else heads
+        if len(pairs) < 5:
+            first = DATE_RE.search(markup)
+            if first:
+                snippet = re.sub(r"\s+", " ", markup[max(0, first.start() - 300): first.end() + 100])
+                print(f"  around the first date: {snippet}")
         this_year = str(date.today().year)
         by_month: dict[str, list[str]] = {}
         for day, title in sorted(pairs):

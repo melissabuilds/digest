@@ -160,22 +160,39 @@ def load_json(path: Path, default):
 def sections(markup: str) -> dict[str, list[str]]:
     """Group a page's headings into {section: [features]}.
 
-    h2 starts a section, h3 and h4 are the features inside it, and h1 (the page
-    title) is skipped. Pages with no h2 put everything under "".
+    Works out the structure from the page rather than assuming it: the heading
+    level used most often holds the features (ties go to the smaller heading),
+    and the nearest larger level holds the sections. A larger level used only
+    once, as the page's very first heading, is the page title, not a section.
+    Headings smaller than the features are notes inside them and are skipped.
     """
     stripped = re.sub(rf"<({BLOCK_TAGS})\b[\s\S]*?</\1>", " ", markup, flags=re.I)
-    grouped: dict[str, list[str]] = {}
-    current = ""
+    heads: list[tuple[int, str]] = []
     for level, inner in HEADING_RE.findall(stripped):
         text = re.sub(r"\s+", " ", html_mod.unescape(TAG_RE.sub(" ", inner))).strip()
-        if not (3 <= len(text) <= 200) or text.lower() in NOISE:
-            continue
-        if level == "1":
-            continue
-        if level == "2":
+        if 3 <= len(text) <= 200 and text.lower() not in NOISE:
+            heads.append((int(level), text))
+    if not heads:
+        return {}
+
+    counts: dict[int, int] = {}
+    for lvl, _ in heads:
+        counts[lvl] = counts.get(lvl, 0) + 1
+    feature_level = max(counts, key=lambda lvl: (counts[lvl], lvl))
+
+    section_level = None
+    for lvl in sorted((l for l in counts if l < feature_level), reverse=True):
+        is_title = counts[lvl] == 1 and heads[0][0] == lvl
+        if not is_title:
+            section_level = lvl
+            break
+
+    grouped: dict[str, list[str]] = {}
+    current = ""
+    for lvl, text in heads:
+        if lvl == section_level:
             current = text
-            grouped.setdefault(current, [])
-        else:
+        elif lvl == feature_level:
             grouped.setdefault(current, []).append(text)
     return {k: v for k, v in grouped.items() if v}
 

@@ -259,6 +259,40 @@ def record(findings: list[dict], summary: str | None) -> None:
     )
 
 
+def backfill_details(sources: list[dict]) -> int:
+    """Open release links in past runs that have no details yet, and fill them in.
+
+    One-off repair for history written before details existed. Touches only
+    digest.json: no diffing, no state changes, no issue.
+    """
+    followable = {s["name"] for s in sources if s.get("follow_new_links")}
+    digest = load_json(DIGEST_FILE, {"updated": None, "runs": []})
+    filled = 0
+    for run in digest["runs"]:
+        for f in run.get("findings", []):
+            if f["name"] not in followable:
+                continue
+            missing = [
+                u for u in f.get("new", [])
+                if u.startswith("http") and u not in f.get("details", {})
+            ]
+            if not missing:
+                continue
+            found = follow(missing, limit=len(missing))
+            if found:
+                f.setdefault("details", {}).update(found)
+                filled += len(found)
+                print(f"  {run['date']} {f['name']}: filled {len(found)} of {len(missing)}")
+            else:
+                print(f"  {run['date']} {f['name']}: nothing found", file=sys.stderr)
+    if filled:
+        DIGEST_FILE.write_text(
+            json.dumps(digest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+    print(f"backfill done, {filled} release pages filled in")
+    return 0
+
+
 def main() -> int:
     dry_run = "--dry-run" in sys.argv
 
@@ -266,6 +300,9 @@ def main() -> int:
     if not sources:
         print(f"No sources found in {SOURCES_FILE}", file=sys.stderr)
         return 1
+
+    if "--backfill-details" in sys.argv:
+        return backfill_details(sources)
 
     state = load_json(STATE_FILE, {})
     findings: list[dict] = []

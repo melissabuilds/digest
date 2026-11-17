@@ -86,7 +86,41 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/10_15_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/10_15_26": {
+              "Data & Reporting": [
+                "Industry Benchmarks dashboard",
+                "Teams support for Catalogs",
+                "Messaging Observability"
+              ],
+              "BrazeAI TM": [
+                "BrazeAI Decisioning Studio™ Go",
+                "Content Optimizer",
+                "Agentic Standards"
+              ],
+              "Orchestration": [
+                "Message Prioritization"
+              ],
+              "Channels & Touchpoints": [
+                "Twilio RCS support",
+                "Email NPS Survey block",
+                "Apex proxying for new custom domains",
+                "IP-based bot click filtering",
+                "Web Targeting for Banners",
+                "Real-time updates for Content Cards",
+                "Shopify historical backfill updates"
+              ],
+              "Partnerships": [
+                "Google DV360 – Canvas Audience Sync",
+                "Bidease - Message Orchestration - Retargeting"
+              ],
+              "SDK": [
+                "SDK breaking updates",
+                "Summary of recent SDK features and fixes"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -125,7 +159,46 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/9_17_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/9_17_26": {
+              "Data & Reporting": [
+                "Push Performance dashboards: Push Analytics Hub",
+                "Cloud Data Ingestion visual mapper",
+                "eCommerce recommended events (basic and nested properties)",
+                "Usage alerts"
+              ],
+              "BrazeAI TM": [
+                "Braze MCP server",
+                "Operator can create and edit drag-and-drop designs",
+                "Knowledge sources",
+                "Content Optimizer step updates"
+              ],
+              "Orchestration": [
+                "Custom Canvas alerts"
+              ],
+              "Channels & Touchpoints": [
+                "Connected Content debugger",
+                "Multi-language support for webhooks",
+                "SCIM Provisioning for Okta and Microsoft Entra ID",
+                "Shopify segments",
+                "Shopify SMS double opt-in",
+                "Banners in Shopify standard integrations",
+                "Manage Subscriptions block",
+                "Liquid tags for subscription group unsubscribes and WhatsApp username",
+                "WhatsApp carousel messages—API sending",
+                "Multiple link shortening domains"
+              ],
+              "Partnerships": [
+                "Globalization Partners International (GPI) - Message Personalization - Localization",
+                "GrowSurf - Message Personalization - Referrals"
+              ],
+              "SDK": [
+                "SDK breaking updates",
+                "Summary of recent SDK features and fixes"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -177,7 +250,47 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/8_20_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/8_20_26": {
+              "Data & Reporting": [
+                "Cloud Data Ingestion SQL editor",
+                "Cloud Data Ingestion visual mapper",
+                "Cloud Data Ingestion for Google Cloud Storage and Azure Blob Storage",
+                "Cloud Data Ingestion to BrazeAI Decisioning Studio"
+              ],
+              "BrazeAI TM": [
+                "Operator can navigate the dashboard for you",
+                "Operator can act on more dashboard pages",
+                "Operator can create and edit Canvases",
+                "Content Optimizer step updates"
+              ],
+              "Orchestration": [
+                "Workspace quiet hours",
+                "Custom Canvas alerts",
+                "Automatic Team assignment"
+              ],
+              "Channels & Touchpoints": [
+                "Connected Content debugger",
+                "In-app message and landing page surveys",
+                "KakaoTalk carousel message",
+                "WhatsApp Template Builder improvements",
+                "Custom form blocks and JavaScript bridge for landing pages",
+                "Multi-step landing page forms",
+                "Manage Subscriptions block for landing pages"
+              ],
+              "Partnerships": [
+                "Audience Sync: Google Data Manager API",
+                "Amazon Bedrock - AI Model Provider",
+                "Bynder - Message Orchestration - CMS and DAM",
+                "Multiplied Media - Message Personalization - Visual and Interactive Content"
+              ],
+              "SDK": [
+                "SDK breaking updates",
+                "Summary of recent SDK features and fixes"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -206,7 +319,41 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/7_23_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/7_23_26": {
+              "Data & Reporting": [
+                "Messaging Observability",
+                "CSV Custom Events mapper",
+                "Catalogs free storage now supports up to 500 MB"
+              ],
+              "BrazeAI TM": [
+                "Operator can now update Settings pages for you",
+                "Remote Braze MCP server"
+              ],
+              "Orchestration": [
+                "Teams audience scoping"
+              ],
+              "Channels & Touchpoints": [
+                "Survey rating scale for in-app messages and landing pages",
+                "WhatsApp limited time offer templates",
+                "Shopify self-serve SDK version upgrade",
+                "HTML editor for Banners",
+                "Replace a file in the media library",
+                "Grid view for the media library",
+                "Shareable Preview support for more channels",
+                "Push credentials update API"
+              ],
+              "Partnerships": [
+                "Refiner - Surveys",
+                "Stayfilm - Visual and Interactive Content",
+                "Validity - Data and Analytics"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -234,7 +381,45 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/6_25_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/6_25_26": {
+              "Data & Reporting": [
+                "Metric name update for Content Cards and Banners",
+                "User deletion",
+                "Data point exclusions",
+                "Event History tab",
+                "Deliverability Center surfaces Microsoft SNDS data for Amazon SES customers"
+              ],
+              "BrazeAI TM": [
+                "Unified BrazeAI assistants in Operator",
+                "Operator support for campaign creation and editing",
+                "Operator support for Content Blocks",
+                "Agent Console templates built with Operator",
+                "Agent Console enhancements",
+                "Edit a launched Content Optimizer step"
+              ],
+              "Channels & Touchpoints": [
+                "User dismissals for Banners",
+                "Custom click tracking for Banners",
+                "Re-eligibility for Banners",
+                "Quick Push A/B Testing",
+                "Optimize with BrazeAI™",
+                "WhatsApp test send results"
+              ],
+              "Partnerships": [
+                "Convercus - Data and Analytics - Loyalty",
+                "Copy Pastd - Message Orchestration - Templates",
+                "Databricks Mosaic - AI Model Providers",
+                "DinMo - Data and Analytics - Reverse ETL",
+                "EmailShepherd - Message Orchestration - Templates",
+                "Talkable - Message Personalization - Referrals"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -264,7 +449,35 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/5_28_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/5_28_26": {
+              "Data & Reporting": [
+                "Push Performance dashboard",
+                "Geolocation fields in catalog selections",
+                "Banner and RCS for Report Builder",
+                "ecommerce.cart_updated event actions"
+              ],
+              "BrazeAI TM": [
+                "Content Optimizer for SMS, MMS, and RCS messages"
+              ],
+              "Orchestration": [
+                "Workspace time zones"
+              ],
+              "Channels & Touchpoints": [
+                "WhatsApp inbound_profile_name",
+                "Orphaned SMS subscription states"
+              ],
+              "Partnerships": [
+                "Chord - Customer Data Platform",
+                "Better Email - Templates",
+                "DailyPlay - Dynamic Content"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -299,7 +512,65 @@
           "new": [
             "https://www.braze.com/docs/releases/2026/4_2_26",
             "https://www.braze.com/docs/releases/2026/4_30_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/4_2_26": {
+              "Data & Reporting": [
+                "New Banner channel fields in Currents and Datashare events",
+                "Mixpanel EU and India data center support for Currents",
+                "Reusable Cloud Data Ingestion (CDI) sources and syncs"
+              ],
+              "BrazeAI TM": [
+                "File support tickets from BrazeAI Operator TM"
+              ],
+              "Orchestration": [
+                "Multi-language translations",
+                "Canvas Context enhancements"
+              ],
+              "Channels & Touchpoints": [
+                "KakaoTalk",
+                "Banners in Canvas"
+              ],
+              "Partnerships": [
+                "CataBoom - Message Personalization - Visual and Interactive Content",
+                "Denada - Message Orchestration - Templates",
+                "Poq - eCommerce - Mobile app platform",
+                "The Trade Desk – Canvas Audience Sync"
+              ],
+              "SDK": [
+                "Connect your Integrated Development Environment (IDE) to the Docs MCP",
+                "SDK breaking updates"
+              ]
+            },
+            "https://www.braze.com/docs/releases/2026/4_30_26": {
+              "Data & Reporting": [
+                "Quick User Add for individual profile creation",
+                "Zero-copy CDI syncs for Canvas triggers",
+                "eCommerce recommended events"
+              ],
+              "Currents and Datashare": [
+                "New Banner and WhatsApp Currents updates"
+              ],
+              "Orchestration": [
+                "Multi-language translations",
+                "Granular permissions migration",
+                "Send to Destination Canvas component",
+                "Canvas Context enhancements",
+                "Delivery validation advancement behavior for Message steps",
+                "Workspace messaging rate limits"
+              ],
+              "Channels & Touchpoints": [
+                "WhatsApp Template Builder",
+                "Shopify product tags, metafields, and collections"
+              ],
+              "Partnerships": [
+                "GRAVTY - Data and Analytics - Loyalty"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Klaviyo",
@@ -319,7 +590,50 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/3_5_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/3_5_26": {
+              "Data & Reporting": [
+                "New data center",
+                "Context variables",
+                "Cloud Data Ingestion sources",
+                "Additional fields for Currents and Data Share events",
+                "Campaign and Canvas fields for Snowflake Data Share",
+                "CSV pre-import validation and error reporting",
+                "Messaging Observability"
+              ],
+              "BrazeAI TM": [
+                "Braze Agents in Agent Console"
+              ],
+              "Orchestration": [
+                "Granular user permissions",
+                "Channel-based rate limiting",
+                "Canvas Context step"
+              ],
+              "Channels & Touchpoints": [
+                "Translate locales in Content Blocks"
+              ],
+              "Partnerships": [
+                "Algolia - Search Recommendations",
+                "Anthropic - AI Model Provider",
+                "Canva - Message Personalization - Creative Studio",
+                "DOTS.ECO - Rewards",
+                "Figma - Message Personalization - Creative Studio",
+                "Flybuy - Message Personalization - Location",
+                "Google Gemini - AI Model Provider",
+                "Limbik - Message Personalization - Personalization Engines",
+                "Linkrunner - Message Orchestration - Attribution",
+                "Mailizio - Message Orchestration - Templates",
+                "Open Loyalty - Data and Analytics - Loyalty",
+                "OpenAI - AI Model Provider",
+                "Shopgate - Channels",
+                "Splio - Data and Analytics - Cohort Import"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -348,7 +662,44 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/2_5_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/2_5_26": {
+              "BrazeAI TM": [
+                "Content Optimizer"
+              ],
+              "Data & Reporting": [
+                "eCommerce recommended events"
+              ],
+              "Channels & Touchpoints": [
+                "Translate locales in banners",
+                "Configure width for drag-and-drop Content Blocks",
+                "Use automated IP warming"
+              ],
+              "Partnerships": [
+                "LinkedIn – Canvas Audience Sync",
+                "Oracle Crowdtwist - Data & analytics",
+                "Fullstory - Dynamic Content",
+                "Open Loyalty - Data & analytics",
+                "DOTS.ECO - Extensions",
+                "Mailizio - Message orchestration"
+              ],
+              "APIs": [
+                "Media Library POST APIs"
+              ],
+              "Currents and Datashare": [
+                "Agent Console Events for Storage destinations and Datashare",
+                "New ‘Retry’ events for individual channels",
+                "Add new ‘time_ms’ field to TokenStateChange event",
+                "Send Anonymous user to Tealium Destinations",
+                "Send Anonymous user to CustomHTTP Destinations",
+                "Email Open event — “machine_open” field"
+              ],
+              "SDK": [
+                "SDK breaking updates"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -368,7 +719,24 @@
           "url": "https://www.braze.com/docs/releases/2026/",
           "new": [
             "https://www.braze.com/docs/releases/2026/1_8_26"
-          ]
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/1_8_26": {
+              "Data & Reporting": [
+                "Updates to Currents events",
+                "Export sync logs by all rows"
+              ],
+              "Channels & Touchpoints": [
+                "Bring Your Own (BYO) WhatsApp connector",
+                "Banners in Canvas",
+                "Dynamic BCC",
+                "Channel-based rate limits"
+              ],
+              "Partnerships": [
+                "LILT - Localization"
+              ]
+            }
+          }
         },
         {
           "name": "Attentive",
@@ -392,6 +760,13 @@
           "url": "https://www.attentive.com/press",
           "new": [
             "Attentive Expands Patented Two-Tap, Adds New Solutions for Omnichannel Visibility and Compliance (29 Jan)"
+          ]
+        },
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "All updates (2026-01-15)"
           ]
         }
       ]

@@ -1,6 +1,91 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "runs": [
+    {
+      "date": "2026-11-17",
+      "summary": null,
+      "findings": [
+        {
+          "name": "Braze",
+          "url": "https://www.braze.com/docs/releases/2026/",
+          "new": [
+            "https://www.braze.com/docs/releases/2026/10_15_26",
+            "https://www.braze.com/docs/releases/2026/11_12_26"
+          ],
+          "details": {
+            "https://www.braze.com/docs/releases/2026/10_15_26": [
+              "October 15, 2026 release",
+              "Data & Reporting",
+              "Industry Benchmarks dashboard",
+              "Teams support for Catalogs",
+              "BrazeAI TM",
+              "BrazeAI Decisioning Studio™ Go",
+              "Content Optimizer",
+              "Agentic Standards",
+              "Orchestration",
+              "Message Prioritization",
+              "Messaging Observability",
+              "Channels & Touchpoints",
+              "Twilio RCS support",
+              "Email NPS Survey block",
+              "Apex proxying for new custom domains",
+              "IP-based bot click filtering",
+              "Web Targeting for Banners",
+              "Real-time updates for Content Cards",
+              "Shopify historical backfill updates",
+              "Partnerships",
+              "Google DV360 – Canvas Audience Sync",
+              "Bidease - Message Orchestration - Retargeting",
+              "SDK",
+              "SDK breaking updates",
+              "Summary of recent SDK features and fixes"
+            ],
+            "https://www.braze.com/docs/releases/2026/11_12_26": [
+              "November 12, 2026 release",
+              "Data & Reporting",
+              "Segment reporting",
+              "Query Builder date range and expanded exports",
+              "Account objects",
+              "Calculated attributes",
+              "Cloud Data Ingestion visual mapper",
+              "Cloud Data Ingestion: Workload Identity Federation for Google sources",
+              "Cloud Data Ingestion to BrazeAI Decisioning Studio",
+              "API request log",
+              "Databricks OpenSharing for EU clusters",
+              "Data Distribution monthly release",
+              "Workload Identity Federation for Currents",
+              "BrazeAI TM",
+              "Verified MCP clients",
+              "Remote MCP server support for IP allowlisting",
+              "Workspace endpoints for the Braze MCP server",
+              "Agent Console enhancements",
+              "Brand guidelines",
+              "Skills",
+              "External MCP servers",
+              "Agents and Context",
+              "Optimize with BrazeAI and Intelligent Timing improvements",
+              "AI item recommendations: improved creation flow",
+              "More flexible experiments",
+              "Decisioning Studio Go agent status indicators",
+              "Self-serve action banks for Decisioning Studio Pro",
+              "Braze email stats in Decisioning Studio Go agent reporting",
+              "Orchestration",
+              "Partner app governance",
+              "Sign in to Braze Bonfire Community with Braze",
+              "Terminate roaming sessions",
+              "Suspend dormant accounts",
+              "Workspace quiet hours",
+              "Multi-channel support in Message Prioritization",
+              "Send to Destination",
+              "Send to a Decisioning Studio Go agent",
+              "Workspace Canvas alerts",
+              "Slack notifications for Canvas alerts",
+              "Channels & Touchpoints"
+            ]
+          }
+        }
+      ]
+    },
     {
       "date": "2026-11-16",
       "summary": "Covers 15 Oct to 15 Nov 2026. One substantial product release in the window, from Braze. Attentive and Canary were quiet on product and active on positioning.\n\n1. Braze Account objects, general availability (new feature). Lets a brand model the business behind its users: companies, franchises, properties, households, with hierarchies between them. This is multi-property data modelling landing natively in a consumer marketing platform, which is the structural advantage hospitality CRM has historically had. Worth watching closely.\n\n2. Braze Skills and External MCP servers (AI/agent). Skills are reusable standing instructions the assistant follows across a workspace. External MCP servers, in early access, let it reach into Jira, Notion and GitHub with per-tool admin approval. The agent layer is becoming an integration surface rather than a chat box.\n\n3. Braze self-serve action banks for Decisioning Studio Pro, beta (AI/agent). Customers can now edit the set of offers, subject lines and send times the decisioning engine chooses from, with the account team reviewing before launch. AI decisioning moving from managed service toward self-serve.\n\n4. Braze WhatsApp Request Contact Info flow, general availability (new feature). Captures a phone number from users who arrive with only a business-scoped WhatsApp ID and links them to an existing profile. Identity resolution for WhatsApp matters for international guest messaging.\n\n5. Attentive named Eric Miao CEO and published his vision for the company on 29 October (other). The framing is a refounding around AI as the intelligence layer across channels. A leadership change plus a strategy reset usually precedes a roadmap shift, so expect movement here.\n\nAlso in the window: Canary collected the AI and Digital Innovation Impact Award at the Tourism Innovation Summit and an Inc. Power Partner award, both in late October. No product announcements. Braze also shipped a 15 October release that this first pass did not open.",

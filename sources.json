@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Braze",
+    "url": "https://www.braze.com/docs/releases/2026/",
+    "link_pattern": "/releases/20\\d\\d/",
+    "follow_new_links": true
+  },
+  {
+    "name": "Attentive",
+    "url": "https://www.attentive.com/press",
+    "link_pattern": "/press-releases/"
+  },
+  {
+    "name": "Canary",
+    "url": "https://www.canarytechnologies.com/press",
+    "link_pattern": "/press/"
+  }
+]

@@ -107,13 +107,13 @@ TITLE_KEY_RE = re.compile(
 )
 
 
-def extract_dated(markup: str) -> list[tuple[str, str]]:
+def extract_dated(markup: str, after: str | None = None) -> list[tuple[str, str]]:
     """Read a "what's new" list of dated updates, whichever way the page ships it.
 
-    Tries two readers and keeps whichever finds more: visible headings followed
-    by a date, and data embedded in the page for the browser to draw later.
+    Tries two readers and keeps whichever finds more: headings paired with the
+    nearest date, and data embedded in the page for the browser to draw later.
     """
-    from_html = extract_dated_headings(markup)
+    from_html = extract_dated_headings(markup, after)
     from_data = extract_dated_data(markup)
     return from_data if len(from_data) > len(from_html) else from_html
 
@@ -192,24 +192,56 @@ def describe(markup: str) -> str:
     return f"{len(markup)} chars, headings {levels}, {dates} dates, embedded data: {hints or 'none'}"
 
 
-def extract_dated_headings(markup: str) -> list[tuple[str, str]]:
-    """Read a page where each update is a heading followed by a date.
+def extract_dated_headings(markup: str, after: str | None = None) -> list[tuple[str, str]]:
+    """Read a page where each update is a heading with a date close by.
+
+    Pairs every heading with the nearest date between it and its neighbouring
+    headings, whether the date sits before or after the title, in visible text or
+    in an attribute. With `after`, only the part of the page following that text
+    is read, which keeps menus and banners out.
 
     Returns (date, title) pairs, e.g. ("2026-10-13", "The new Composer is live").
     """
-    stripped = re.sub(rf"<({BLOCK_TAGS})\b[\s\S]*?</\1>", " ", markup, flags=re.I)
+    start = 0
+    if after:
+        found_at = markup.find(after)
+        if found_at >= 0:
+            start = found_at + len(after)
+    page = markup[start:]
+    # Stop at the site footer, the last <footer> on the page. Cards may have
+    # their own small footers, so only the final one counts.
+    site_footer = page.lower().rfind("<footer")
+    if site_footer > 0:
+        page = page[:site_footer]
+    # Scripts and styles only; card markup (header, footer, aside) stays.
+    page = re.sub(r"<(script|style|noscript|svg)\b[\s\S]*?</\1>", " ", page, flags=re.I)
+    # Dates inside <meta> tags describe the page, not an update.
+    page = re.sub(r"<meta\b[^>]*>", " ", page, flags=re.I)
+
+    heads = [
+        (m.start(), m.end(), re.sub(r"\s+", " ", html_mod.unescape(TAG_RE.sub(" ", m.group(2)))).strip())
+        for m in re.finditer(r"<h([2-4])\b[^>]*>(.*?)</h\1>", page, flags=re.S | re.I)
+    ]
+    dates = [(m.start(), m.group(1)) for m in DATE_RE.finditer(page)]
     pairs: list[tuple[str, str]] = []
     seen: set[tuple[str, str]] = set()
-    headings = list(re.finditer(r"<h([2-4])\b[^>]*>(.*?)</h\1>", stripped, flags=re.S | re.I))
-    for i, m in enumerate(headings):
-        title = re.sub(r"\s+", " ", html_mod.unescape(TAG_RE.sub(" ", m.group(2)))).strip()
+    for i, (h_start, h_end, title) in enumerate(heads):
         if not (3 <= len(title) <= 200) or title.lower() in NOISE:
             continue
-        end = headings[i + 1].start() if i + 1 < len(headings) else len(stripped)
-        found = DATE_RE.search(TAG_RE.sub(" ", stripped[m.end():end]))
-        if found and (found.group(1), title) not in seen:
-            seen.add((found.group(1), title))
-            pairs.append((found.group(1), title))
+        lo = heads[i - 1][1] if i else 0
+        hi = heads[i + 1][0] if i + 1 < len(heads) else len(page)
+        nearby = [
+            (h_start - pos if pos < h_start else pos - h_end, day)
+            for pos, day in dates
+            if lo <= pos < hi
+        ]
+        nearby = [(gap, day) for gap, day in nearby if gap <= 2500]
+        if not nearby:
+            continue
+        day = min(nearby)[1]
+        if (day, title) not in seen:
+            seen.add((day, title))
+            pairs.append((day, title))
     return pairs
 
 
@@ -436,9 +468,16 @@ def backfill_details(sources: list[dict]) -> int:
         for f in run.get("findings", []):
             if f["name"] not in followable:
                 continue
+            def current(entry) -> bool:
+                # The page needs {section: [features]}. Older runs saved a flat
+                # list, which shows up as a bare link, so those get redone.
+                return isinstance(entry, dict) and any(
+                    isinstance(v, list) and v for v in entry.values()
+                )
+
             missing = [
                 u for u in f.get("new", [])
-                if u.startswith("http") and u not in f.get("details", {})
+                if u.startswith("http") and not current(f.get("details", {}).get(u))
             ]
             if not missing:
                 print(f"  {run['date']} {f['name']}: already has details")
@@ -486,7 +525,7 @@ def backfill_dated(sources: list[dict]) -> None:
             print(f"  fetch failed: {exc}")
             continue
         print(f"  page: {describe(markup)}")
-        heads, data = extract_dated_headings(markup), extract_dated_data(markup)
+        heads, data = extract_dated_headings(markup, source.get("after")), extract_dated_data(markup)
         print(f"  found {len(heads)} from headings, {len(data)} from embedded data")
         print(f"  headings sample: {heads[:4]}")
         print(f"  embedded sample: {data[:4]}")
@@ -560,7 +599,7 @@ def main() -> int:
                 print(f"  not a help center feed: {exc}", file=sys.stderr)
                 continue
         elif source.get("dated"):
-            entries = [f"{title} ({day})" for day, title in extract_dated(markup)]
+            entries = [f"{title} ({day})" for day, title in extract_dated(markup, source.get("after"))]
         else:
             entries = extract(markup, url, source.get("link_pattern"))
             if not entries:

@@ -1,6 +1,6 @@
 {
   "Attentive": {
-    "checked": "2026-11-17",
+    "checked": "2026-11-18",
     "entries": [
       "Recent announcements and press releases",
       "In the news",
@@ -28,7 +28,7 @@
     ]
   },
   "Attentive release notes": {
-    "checked": "2026-11-17",
+    "checked": "2026-11-18",
     "entries": [
       "Release Notes - Q3 2026: AI Grow: Turn more website traffic into subscribers",
       "Release Notes - Q3 2026: Deliverability Dashboard: Monitor email deliverability health at a glance",
@@ -92,7 +92,7 @@
     ]
   },
   "Braze": {
-    "checked": "2026-11-17",
+    "checked": "2026-11-18",
     "entries": [
       "2026 Release Notes",
       "https://www.braze.com/docs/releases/2026/1_8_26",
@@ -154,9 +154,16 @@
     ]
   },
   "Klaviyo": {
-    "checked": "2026-11-17",
+    "checked": "2026-11-18",
     "entries": [
+      "Delete Chat History in Composer (2026-11-18)",
+      "New Customer Agent review connectors (2026-11-18)",
+      "Cross Channel Memory in Customer Agent (2026-11-18)",
+      "Log in to Klaviyo with passkeys (2026-11-17)",
+      "Easier sign in on the Composer mobile app (2026-11-17)",
+      "Multiple attachments in Helpdesk (2026-11-17)",
       "Revenue attribution for In App Forms (2026-11-17)",
+      "Folders in Flows (2026-11-17)",
       "Drivepoint connector in Composer (2026-11-16)",
       "Hex connector in Composer (2026-11-16)",
       "Recharge connector for Composer (2026-11-16)",

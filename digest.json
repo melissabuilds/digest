@@ -1,6 +1,25 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-18",
   "runs": [
+    {
+      "date": "2026-11-18",
+      "summary": null,
+      "findings": [
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Delete Chat History in Composer (2026-11-18)",
+            "New Customer Agent review connectors (2026-11-18)",
+            "Cross Channel Memory in Customer Agent (2026-11-18)",
+            "Log in to Klaviyo with passkeys (2026-11-17)",
+            "Easier sign in on the Composer mobile app (2026-11-17)",
+            "Multiple attachments in Helpdesk (2026-11-17)",
+            "Folders in Flows (2026-11-17)"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-16",
       "summary": "Braze makes properties and franchises first-class data\n\nBraze Account objects went generally available on 12 November, letting brands model properties, franchises and households with hierarchies between them. Multi-property data modelling is the structural advantage hospitality CRM has relied on, and it is now native in a consumer marketing platform. The release also added Skills and External MCP servers.\n\nKlaviyo kept wiring Composer into outside data, with Amplitude, Supermetrics and Airtable connectors. Attentive's new CEO set out an AI-first vision on 9 November.",

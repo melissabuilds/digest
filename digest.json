@@ -1,6 +1,23 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "runs": [
+    {
+      "date": "2026-11-19",
+      "summary": null,
+      "findings": [
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Create custom object types and manage records in Composer (2026-11-19)",
+            "Version history for sign-up forms and landing pages (2026-11-18)",
+            "Agentic Developer Docs (2026-11-18)",
+            "Oracle OPERA Integration (2026-11-18)",
+            "Composer Mobile Android 1.2: Account Setup, Artifacts, and Richer Chat (2026-11-16)"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-18",
       "summary": null,

@@ -1,6 +1,6 @@
 {
   "Attentive": {
-    "checked": "2026-11-18",
+    "checked": "2026-11-19",
     "entries": [
       "Recent announcements and press releases",
       "In the news",
@@ -28,7 +28,7 @@
     ]
   },
   "Attentive release notes": {
-    "checked": "2026-11-18",
+    "checked": "2026-11-19",
     "entries": [
       "Release Notes - Q3 2026: AI Grow: Turn more website traffic into subscribers",
       "Release Notes - Q3 2026: Deliverability Dashboard: Monitor email deliverability health at a glance",
@@ -92,7 +92,7 @@
     ]
   },
   "Braze": {
-    "checked": "2026-11-18",
+    "checked": "2026-11-19",
     "entries": [
       "2026 Release Notes",
       "https://www.braze.com/docs/releases/2026/1_8_26",
@@ -154,11 +154,15 @@
     ]
   },
   "Klaviyo": {
-    "checked": "2026-11-18",
+    "checked": "2026-11-19",
     "entries": [
+      "Create custom object types and manage records in Composer (2026-11-19)",
       "Delete Chat History in Composer (2026-11-18)",
       "New Customer Agent review connectors (2026-11-18)",
+      "Version history for sign-up forms and landing pages (2026-11-18)",
       "Cross Channel Memory in Customer Agent (2026-11-18)",
+      "Agentic Developer Docs (2026-11-18)",
+      "Oracle OPERA Integration (2026-11-18)",
       "Log in to Klaviyo with passkeys (2026-11-17)",
       "Easier sign in on the Composer mobile app (2026-11-17)",
       "Multiple attachments in Helpdesk (2026-11-17)",
@@ -168,6 +172,7 @@
       "Hex connector in Composer (2026-11-16)",
       "Recharge connector for Composer (2026-11-16)",
       "GrowthBook connector in Composer (2026-11-16)",
+      "Composer Mobile Android 1.2: Account Setup, Artifacts, and Richer Chat (2026-11-16)",
       "Yotpo connector in Composer (2026-11-16)",
       "Postscript connector in Composer (2026-11-16)",
       "Attentive connector in Composer (2026-11-16)",

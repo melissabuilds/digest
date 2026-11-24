@@ -1,10 +1,11 @@
 {
   "Attentive": {
-    "checked": "2026-11-20",
+    "checked": "2026-11-24",
     "entries": [
       "Recent announcements and press releases",
       "In the news",
       "Press releases",
+      "https://www.attentive.com/press-releases/attentive-mcp-launches-on-snowflake-marketplace",
       "https://www.attentive.com/press-releases/attentives-new-ceo-eric-miao-sets-new-vision-to-transform-how-brands-market-to-consumers",
       "https://www.attentive.com/press-releases/pacsun-selects-attentive-to-power-its-next-generation-of-customer-engagement",
       "https://www.attentive.com/press-releases/ai-is-influencing-what-shoppers-buy-but-brands-still-shape-their-customer-journey-new-attentive-research-finds",
@@ -23,12 +24,11 @@
       "https://www.attentive.com/press-releases/attentive-introduces-smarter-simpler-features-for-brands-to-engage-customers",
       "https://www.attentive.com/press-releases/forbes-2025-cloud-100",
       "https://www.attentive.com/press-releases/reinventing-whats-possible-in-the-inbox-attentive-surges-past-1-000-email-customers-launches-ai-pro-for-email",
-      "https://www.attentive.com/press-releases/attentive-launches-bi-directional-data-share-integration-on-snowflake-marketplace",
-      "https://www.attentive.com/press-releases/new-global-study-reveals-consumers-demand-more-personalization-in-marketing-81-ignore-irrelevant-messages-while-personalized-experiences-drive-loyalty-and-sales"
+      "https://www.attentive.com/press-releases/attentive-launches-bi-directional-data-share-integration-on-snowflake-marketplace"
     ]
   },
   "Attentive release notes": {
-    "checked": "2026-11-20",
+    "checked": "2026-11-24",
     "entries": [
       "Release Notes - Q3 2026: AI Grow: Turn more website traffic into subscribers",
       "Release Notes - Q3 2026: Deliverability Dashboard: Monitor email deliverability health at a glance",
@@ -92,7 +92,7 @@
     ]
   },
   "Braze": {
-    "checked": "2026-11-20",
+    "checked": "2026-11-24",
     "entries": [
       "2026 Release Notes",
       "https://www.braze.com/docs/releases/2026/1_8_26",
@@ -154,8 +154,16 @@
     ]
   },
   "Klaviyo": {
-    "checked": "2026-11-20",
+    "checked": "2026-11-24",
     "entries": [
+      "Composer Mobile App iOS and Android 1.3: Set up, Brand Kits and Approvals (2026-11-23)",
+      "Send to Composer buttons in Artifacts (2026-11-23)",
+      "Artifact storage in Composer (2026-11-23)",
+      "Artifact Library in Composer (2026-11-23)",
+      "Klaviyo Starter app in Shopify (2026-11-20)",
+      "Automatic tagging with custom tags in Helpdesk (2026-11-20)",
+      "Onboarding skills for Klaviyo MCP (2026-11-20)",
+      "Connected app controls (2026-11-20)",
       "Create custom object types and manage records in Composer (2026-11-19)",
       "Delete Chat History in Composer (2026-11-18)",
       "New Customer Agent review connectors (2026-11-18)",

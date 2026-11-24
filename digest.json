@@ -1,6 +1,33 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-24",
   "runs": [
+    {
+      "date": "2026-11-24",
+      "summary": null,
+      "findings": [
+        {
+          "name": "Attentive",
+          "url": "https://www.attentive.com/press",
+          "new": [
+            "https://www.attentive.com/press-releases/attentive-mcp-launches-on-snowflake-marketplace"
+          ]
+        },
+        {
+          "name": "Klaviyo",
+          "url": "https://www.klaviyo.com/whats-new",
+          "new": [
+            "Composer Mobile App iOS and Android 1.3: Set up, Brand Kits and Approvals (2026-11-23)",
+            "Send to Composer buttons in Artifacts (2026-11-23)",
+            "Artifact storage in Composer (2026-11-23)",
+            "Artifact Library in Composer (2026-11-23)",
+            "Klaviyo Starter app in Shopify (2026-11-20)",
+            "Automatic tagging with custom tags in Helpdesk (2026-11-20)",
+            "Onboarding skills for Klaviyo MCP (2026-11-20)",
+            "Connected app controls (2026-11-20)"
+          ]
+        }
+      ]
+    },
     {
       "date": "2026-11-19",
       "summary": null,
